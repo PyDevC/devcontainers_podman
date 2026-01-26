@@ -2,10 +2,8 @@
 
 ## What this is
 - Long-running Podman containers
-- Host-based editing (Neovim)
 - Container-based runtime & dependencies
 - AMD GPU (ROCm) support
-- Same container for multiple repos
 
 ## Containers
 - devenv   → generic dev
@@ -13,8 +11,9 @@
 - llvm     → LLVM / compiler work
 
 ## Mounted directories
-- ~/personal/github → /workspace/github
-- ~/work/contrib    → /workspace/contrib
+- ~/personal/github → container:~/personal/github
+- ~/work/contrib    → container:~/work/contrib
+- ~/work/project    → container:~/work/project
 
 ## Usage
 
@@ -23,4 +22,7 @@ Build images:
 podman build -f images/Containerfile.devenv -t dev-devenv .
 podman build -f images/Containerfile.pytorch -t dev-pytorch .
 podman build -f images/Containerfile.llvm -t dev-llvm .
+```
 
+> NOTE: We only install the things that are necessary like vim, zsh, oh-my-zsh, git, curl, wget, tmux, and wheel.
+> Everything else can be installed using [trench](https://github.com/PyDevC/trench)
