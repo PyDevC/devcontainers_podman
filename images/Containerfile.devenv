@@ -4,7 +4,9 @@ RUN echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf && \
     echo "fastestmirror=True" >> /etc/dnf/dnf.conf
 
 RUN dnf update -y && dnf install -y \
-    python3 git curl wget bash zsh tmux wheel vim
+    python3 git curl wget bash zsh tmux wheel vim \
+    langpacks-en
+
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
